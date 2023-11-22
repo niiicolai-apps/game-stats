@@ -7,13 +7,13 @@ const create = (options={}) => {
         return stats.value.find(stat => stat.name === name)
     }
 
-    const add = (stat) => {
+    const add = (stat, level=1, experience=0) => {
         if (!stat) throw new Error('Stat is required')
         if (findByName(stat.name)) throw new Error('Name already exists')
 
         const s = {
-            level: 1,
-            experience: 0,
+            level,
+            experience,
             name: stat.name,
             maxLevel: stat.maxLevel,
             onAddExperience: stat.onAddExperience,
